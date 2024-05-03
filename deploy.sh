@@ -141,7 +141,7 @@ install() {
         -e FILE_SERVER_PORT=${FILE_PORT} \
         -v $(pwd)/data/zerotier/dist:/app/dist \
         -v $(pwd)/data/zerotier/ztncui:/app/ztncui \
-        -v $(pwd)/data/zerotier/one:/var/lib/zerotier-one -v $(pwd)/data/zerotier/config:/app/config --restart unless-stopped xubiaolin/zerotier-planet:latest
+        -v $(pwd)/data/zerotier/one:/var/lib/zerotier-one -v $(pwd)/data/zerotier/config:/app/config --restart unless-stopped bigjunda/zerotier:latest
 
     if [ $? -ne 0 ]; then
         echo "安装失败"
@@ -223,7 +223,7 @@ uninstall() {
 
     docker stop ${CONTAINER_NAME}
     docker rm ${CONTAINER_NAME}
-    docker rmi xubiaolin/zerotier-planet:latest
+    docker rmi bigjunda/zerotier:latest
 
     read -p "是否删除数据?(y/n)" delete_data
     delete_data=${delete_data:-n}
@@ -270,7 +270,7 @@ uninstall() {
 #     docker stop ${CONTAINER_NAME}
 #     docker rm ${CONTAINER_NAME}
 
-#     docker pull xubiaolin/zerotier-planet:latest
+#     docker pull bigjunda/zerotier:latest
 #     docker run -d --name ${CONTAINER_NAME} -p ${ZT_PORT}:${ZT_PORT} \
 #         -p ${ZT_PORT}:${ZT_PORT}/udp \
 #         -p ${API_PORT}:${API_PORT} \
@@ -285,7 +285,7 @@ uninstall() {
 #         -v $(pwd)/data/zerotier/one:/var/lib/zerotier-one \
 #         -v $(pwd)/data/zerotier/config:/app/config \
 #         --restart unless-stopped \
-#         xubiaolin/zerotier-planet:latest
+#         bigjunda/zerotier:latest
 # }
 
 resetpwd() {
